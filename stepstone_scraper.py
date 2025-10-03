@@ -80,6 +80,7 @@ class StepStoneScraper:
                 (By.XPATH, "//*[normalize-space(text())='NEU']")
             )
         )
+        # Add 6 seconds sleep just to be sure the page is fully loaded.
         time.sleep(6)
 
     def get_recent_jobs(self):
