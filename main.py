@@ -1,14 +1,19 @@
 import os
+import time
 from selenium import webdriver
 from stepstone_scraper import StepStoneScraper
 import requests
 from datetime import datetime
 from dotenv import load_dotenv
+import smtplib
 
 load_dotenv()
 
 sheet_endpoint = os.getenv("SHEET_ENDPOINT")
 token = os.getenv("TOKEN")
+google_sheet_result = os.getenv("GOOGLE_SHEET_RESULT")
+my_email = os.getenv("MY_EMAIL")
+password = os.getenv("PASSWORD")
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("detach", True)
@@ -46,4 +51,18 @@ for job in jobs:
         headers=bearer_headers
     )
 
+
+time.sleep(5)
+
+with smtplib.SMTP("smtp.gmail.com") as connection:
+    connection.starttls()
+    connection.login(user=my_email, password=password)
+
+    message = f"Subject:Stepstone Job Report\n\nYour Daily Job Listings Are Ready – View in Google Sheets{google_sheet_result}"
+
+    connection.sendmail(
+        from_addr=my_email,
+        to_addrs=my_email,
+        msg=message.encode("utf-8")
+    )
 
