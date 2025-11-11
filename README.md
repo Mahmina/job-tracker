@@ -1,6 +1,5 @@
 <h1>Job Tracker (StepStone Scraper)</h1>
-
-
+<br />
 
 <h2>Description</h2>
 This is a Python automation tool using Selenium that searches StepStone for Frontend jobs in Germany, filters by part-time, 5km radius and posted in the last 24h. Then it sends the results to a Google Sheet with an email summary. It uses Selenium with a persisted Chrome profile for reliable browsing, posts job data to a REST endpoint, and notifies via Gmail SMTP.<br />
