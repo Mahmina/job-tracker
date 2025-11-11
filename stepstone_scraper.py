@@ -16,6 +16,14 @@ class StepStoneScraper:
         self.driver.get(WEBSITE_URL)
         self.wait = WebDriverWait(self.driver, 10)
 
+    def accept_cookies(self):
+        accept_button = self.wait.until(
+            ec.element_to_be_clickable(
+                (By.CSS_SELECTOR, '#fixedfooter .accept-button-container .button-container:nth-of-type(2)')
+            )
+        )
+        accept_button.click()
+
     def search_jobs(self):
         """Fill in job title and location,
         apply 5km radius and part_time filter,
@@ -39,7 +47,7 @@ class StepStoneScraper:
 
         radius = self.wait.until(
             ec.element_to_be_clickable(
-                (By.XPATH, '//*[@id="app-searchBar"]//*[contains(@id, "stepstone-menubar")]')
+                (By.XPATH, '//button[@aria-label="select radius"]')
             )
         )
         radius.click()
