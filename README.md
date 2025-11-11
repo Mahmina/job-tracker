@@ -23,7 +23,7 @@ This is a Python automation tool using Selenium that searches StepStone for Fron
 <br />
 - In project page, click on "New Project" and create a new project in Sheety and paste in the URL of your own Google Sheet.
 <br />
-- Click on the workouts API endpoint and enable GET and POST
+- Click on the API endpoint and enable GET and POST.
 <br />
 <br />
 <br />
